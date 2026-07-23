@@ -1,0 +1,37 @@
+//Componentname.test.jsx --->test file
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+
+import Login from "./Login";
+
+test("updates input", async () => {
+  render(<Login />);
+
+  const input = screen.getByPlaceholderText("Enter name");
+
+  await userEvent.type(input, "Ramani");
+
+  expect(input).toHaveValue("Ramani");
+
+  expect(screen.getByText("Ramani")).toBeInTheDocument();
+});
+
+
+//component
+import { useState } from "react";
+
+export default function Login() {
+  const [name, setName] = useState("");
+
+  return (
+    <>
+      <input
+        placeholder="Enter name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <p>{name}</p>
+    </>
+  );
+}
