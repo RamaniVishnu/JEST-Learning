@@ -1,0 +1,50 @@
+component
+import { useEffect, useState } from "react";
+
+
+export default function User() {
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+
+  useEffect(() => {
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+  }, []);
+
+
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
+
+  if (error) {
+    return <h2>Error loading users</h2>;
+  }
+
+
+  return <h2>User List</h2>;
+
+}
+
+
+test file
+import { render, screen } from "@testing-library/react";
+
+import User from "./User";
+
+
+test("shows loading message", () => {
+
+  render(<User />);
+
+
+  expect(
+    screen.getByText("Loading...")
+  ).toBeInTheDocument();
+
+});
