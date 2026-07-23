@@ -32,19 +32,24 @@ export default function User() {
 }
 
 
-test file
+test file for loading and error
 import { render, screen } from "@testing-library/react";
 
 import User from "./User";
 
 
 test("shows loading message", () => {
-
   render(<User />);
-
-
   expect(
     screen.getByText("Loading...")
+  ).toBeInTheDocument();
+
+});
+
+test("shows error message", () => {
+  render(<User />);
+  expect(
+    screen.getByText("Error loading users")
   ).toBeInTheDocument();
 
 });
