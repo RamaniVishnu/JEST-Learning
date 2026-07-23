@@ -1,0 +1,24 @@
+Most common queries used in interviews
+Query	                                      Purpose
+getByText()          	                    Find text
+getByRole()	                              Find buttons, inputs, headings (preferred when possible)
+getByPlaceholderText()	                  Find input by placeholder
+getByLabelText()	                        Find input by associated label
+getByTestId()	                            Find element by data-testid (use sparingly)
+
+
+Common assertions
+expect(element).toBeInTheDocument();
+expect(element).toHaveTextContent("Hello");
+expect(input).toHaveValue("John");
+expect(button).toBeDisabled();
+expect(mockFn).toHaveBeenCalled();
+
+
+
+Typical React interview questions
+Render a component and verify text.
+Check that a button click changes state.
+Verify an input updates as the user types.
+Mock an API call (using jest.fn() or jest.mock()).
+Check conditional rendering (e.g., loading spinner or error message).
