@@ -1,0 +1,52 @@
+component
+import { useState } from "react";
+
+export default function Toggle() {
+  const [status, setStatus] = useState(false);
+
+  function handleClick() {
+    setStatus(true);
+  }
+
+  return (
+    <div>
+      <p>
+        {status ? "Activated" : "Not Activated"}
+      </p>
+
+      <button onClick={handleClick}>
+        Activate
+      </button>
+    </div>
+  );
+}
+
+test file
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+
+import Toggle from "./Toggle";
+
+
+test("changes state after button click", async () => {
+
+  render(<Toggle />);
+
+  // check initial state
+  expect(
+    screen.getByText("Not Activated")
+  ).toBeInTheDocument();
+
+
+  // click button
+  const button = screen.getByRole("button");
+
+  await userEvent.click(button);
+
+
+  // check updated state
+  expect(
+    screen.getByText("Activated")
+  ).toBeInTheDocument();
+
+});
